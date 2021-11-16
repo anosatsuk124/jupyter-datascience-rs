@@ -1,9 +1,9 @@
 {
   "LanguageServerManager": {
     "language_servers": {
-      "python": {
-        "version": 1,
-        "argv": ["rust-anlyzer"],
+      "rust": {
+        "version": 2,
+        "argv": ["rust-analyzer"],
         "languages": ["rust"]
       }
     }

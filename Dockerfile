@@ -19,18 +19,18 @@ RUN wget https://raw.githubusercontent.com/rust-lang/rustup/master/rustup-init.s
     chmod +x rustup-init.sh;\
     ./rustup-init.sh -y --no-modify-path;\
     rm  rustup-init.sh;\
-    rustup --version; \
-    cargo --version; \
-    rustc --version; \
-    cargo install evcxr_jupyter
+    chmod -R a+w $RUSTUP_HOME $CARGO_HOME
 RUN rustup component add rls rust-analysis rust-src
 
 #Jupyter setting
 USER 1000
+RUN cargo install evcxr_jupyter
 RUN pip install --user jupytext;\
     pip install --user jupyterlab_vim;\
     pip install --user jupyterlab-vimrc;\
     pip install --user jupyterlab-lsp;\
     evcxr_jupyter --install;\
     wget https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz -O - | gunzip -c - > ~/.local/bin/rust-analyzer;\
-    chmod +x ~/.local/bin/rust-analyzer
+    chmod +x ~/.local/bin/rust-analyzer;\ 
+    jupyter server extension enable --user --py jupyter_lsp;\
+    jupyter serverextension enable jupyterlab
