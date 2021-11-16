@@ -1,0 +1,16 @@
+{
+  "LanguageServerManager": {
+    "language_servers": {
+      "python": {
+        "version": 1,
+        "argv": ["rust-anlyzer"],
+        "languages": ["rust"]
+      }
+    }
+  },
+  "NotebookApp": {
+    "nbserver_extensions": {
+      "jupyterlab": true
+    }
+  }
+}

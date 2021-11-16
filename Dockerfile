@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y \
     wget \
     cmake \
     nodejs \
-    git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -28,9 +27,10 @@ RUN rustup component add rls rust-analysis rust-src
 
 #Jupyter setting
 USER 1000
-RUN jupyter notebook --generate-config;\
-    jupyter serverextension enable jupyterlab;\
-    pip install --user jupytext;\
+RUN pip install --user jupytext;\
     pip install --user jupyterlab_vim;\
     pip install --user jupyterlab-vimrc;\
-    evcxr_jupyter --install
+    pip install --user jupyterlab-lsp;\
+    evcxr_jupyter --install;\
+    wget https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz -O - | gunzip -c - > ~/.local/bin/rust-analyzer;\
+    chmod +x ~/.local/bin/rust-analyzer
