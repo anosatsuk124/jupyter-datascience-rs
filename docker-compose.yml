@@ -11,5 +11,5 @@ services:
       - 8888:8888
     volumes:
       - ${PWD}:/home/jovyan/work
-      - ${PWD}/.vimrc:/home/jovyan/.jupyter/lab/user-settings/jupyterlab-vimrc/vimrc.jupyterlab-settings
-    command:  start-notebook.sh --NotebookApp.token='' --notebook-dir=/home/jovyan/work
+      - ${PWD}/.vimrc.json:/home/jovyan/.jupyter/lab/user-settings/jupyterlab-vimrc/vimrc.jupyterlab-settings
+    command: start-notebook.sh --NotebookApp.token='' --notebook-dir=/home/jovyan/work
