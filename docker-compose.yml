@@ -1,0 +1,15 @@
+version: "3"
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - TZ=Asia/Tokyo
+      - JUPYTER_ENABLE_LAB=yes
+    ports:
+      - 8888:8888
+    volumes:
+      - ${PWD}:/home/jovyan/work
+      - ${PWD}/.vimrc:/home/jovyan/.jupyter/lab/user-settings/jupyterlab-vimrc/vimrc.jupyterlab-settings
+    command:  start-notebook.sh --NotebookApp.token='' --notebook-dir=/home/jovyan/work
